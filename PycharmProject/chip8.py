@@ -22,57 +22,58 @@ chip8_fontset = [
 
 
 class Chip8:
-    drawFlag = None
-
-    # Chip8
-    gfx = [None] * (64 * 32)  # Total amount of pixels: 2048
-    key = [None] * 16
-
-    pc = None  # Program counter
-    opcode = None  # Current opcode
-    I = None  # Index register
-    sp = None  # Stack pointer
-
-    V = [None] * 16  # V-regs (V0-VF)
-    stack = [None] * 16  # Stack (16 levels)
-    memory = [None] * 4096  # Memory (size = 4k)
-
-    delay_timer = None  # Delay timer
-    sound_timer = None  # Sound timer
-
     def __init__(self):
+        self.drawFlag = None
+
+        # Chip8
+        self.gfx = [None] * (64 * 32)  # Total amount of pixels: 2048
+        self.key = [None] * 16
+
+        self.pc = None  # Program counter
+        self.opcode = None  # Current opcode
+        self.I = None  # Index register
+        self.sp = None  # Stack pointer
+
+        self.V = [None] * 16  # V-regs (V0-VF)
+        self.stack = [None] * 16  # Stack (16 levels)
+        self.memory = [None] * 4096  # Memory (size = 4k)
+
+        self.delay_timer = None  # Delay timer
+        self.sound_timer = None  # Sound timer
+
+    def __del__(self):
         pass
 
     def init(self):
-        pc = 0x200  # Program counter starts at 0x200 (Start adress program)
-        opcode = 0  # Reset current opcode
-        I = 0  # Reset index register
-        sp = 0  # Reset stack pointer
+        self.pc = 0x200  # Program counter starts at 0x200 (Start adress program)
+        self.opcode = 0  # Reset current opcode
+        self.I = 0  # Reset index register
+        self.sp = 0  # Reset stack pointer
 
         # Clear display
         for i in range(2048):
-            gfx[i] = 0
+            self.gfx[i] = 0
 
         # Clear stack
         for i in range(16):
-            stack[i] = 0
+            self.stack[i] = 0
 
         for i in range(16):
-            key[i] = V[i] = 0
+            self.key[i] = self.V[i] = 0
 
         # Clear memory
         for i in range(4096):
-            memory[i] = 0
+            self.memory[i] = 0
 
         # Load fontset
         for i in range(80):
-            memory[i] = chip8_fontset[i]
+            self.memory[i] = chip8_fontset[i]
 
         # Reset timers
-        delay_timer = 0
-        sound_timer = 0
+        self.delay_timer = 0
+        self.sound_timer = 0
 
         # Clear screen once
-        drawFlag = True
+        self.drawFlag = True
 
         random.seed(datetime.now())
