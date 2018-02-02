@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <GLUT/glut.h>
 #include "chip8.h"
 
@@ -40,8 +41,12 @@ u8 screenData[SCREEN_HEIGHT][SCREEN_WIDTH][3];
 void setupTexture();
 
 int main(int argc, char **argv) {
+//    char cwd[1024];
+//    if (getcwd(cwd, sizeof(cwd)) != NULL)
+//        fprintf(stdout, "Current working dir: %s\n", cwd);
+    
     // Load game
-    if (!myChip8.loadApplication("/Users/jinhankim/Dropbox/_jinhankim/XcodeProjects/chip_8_multigesture/chip8_applications/pong2.c8"))
+    if (!myChip8.loadApplication("/Users/jinhankim/github/chip8/chip8_xcode_project/chip8_xcode_project/chip8_applications/pong2.c8"))
         return 1;
     
     // Setup OpenGL
