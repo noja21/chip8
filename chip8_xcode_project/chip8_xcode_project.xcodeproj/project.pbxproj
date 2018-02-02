@@ -29,8 +29,6 @@
 		6B4D8BB42024250E00291618 /* chip8_xcode_project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = chip8_xcode_project; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4D8BBE2024259300291618 /* chip8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chip8.h; sourceTree = "<group>"; };
 		6B4D8BBF2024259400291618 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		6B4D8BC02024259400291618 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		6B4D8BC12024259400291618 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6B4D8BC22024259400291618 /* chip8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chip8.cpp; sourceTree = "<group>"; };
 		6B4D8BC62024264200291618 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		6B4D8BC82024264A00291618 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -71,9 +69,7 @@
 			children = (
 				6B4D8BC22024259400291618 /* chip8.cpp */,
 				6B4D8BBE2024259300291618 /* chip8.h */,
-				6B4D8BC12024259400291618 /* LICENSE */,
 				6B4D8BBF2024259400291618 /* main.cpp */,
-				6B4D8BC02024259400291618 /* README.md */,
 			);
 			path = chip8_xcode_project;
 			sourceTree = "<group>";
