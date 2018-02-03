@@ -340,6 +340,5 @@ def debugRender(self):
             else:
                 print(" ", end='')
         print("")
-
     print("")
 
