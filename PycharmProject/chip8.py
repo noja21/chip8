@@ -224,6 +224,7 @@ class Chip8:
             # and to 0 if that doesn't happen
             x = VX
             y = VY
+            #print("HERE x, y: (%d, %d)" % (x, y))
             height = last_nibble
             pixel = None
 
@@ -232,6 +233,7 @@ class Chip8:
                 pixel = self.memory[self.I + yline]
                 for xline in range(8):
                     if (pixel & (0x80 >> xline)) != 0:
+                        #print("HERE: %d" % (x + xline + ((y + yline) * 64))) # idx max: 2047, idx error: 2174
                         if self.gfx[x + xline + ((y + yline) * 64)] == 1:
                             self.V[0xF] = 1
                         self.gfx[x + xline + ((y + yline) * 64)] = self.gfx[x + xline + ((y + yline) * 64)] ^ 1
