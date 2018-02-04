@@ -24,7 +24,7 @@ screenData = np.zeros(shape=(SCREEN_HEIGHT, SCREEN_WIDTH, 3))
 
 def main(argc, argv):
     if argc < 2:
-        print("Usage: myChip8.exe chip8application\n")
+        print("Usage: phip8 chip8application\n")
         return 1
 
     # Load game
@@ -163,84 +163,84 @@ def reshape_window(w, h):
 
 
 def keyboardDown(key, x, y):
-    if key == 27:  # esc
+    if key == b'\x1b':  # esc
         sys.exit(0)
 
-    if key == '1':
+    if key == b'1':
         myChip8.key[0x1] = 1
-    elif key == '2':
+    elif key == b'2':
         myChip8.key[0x2] = 1
-    elif key == '3':
+    elif key == b'3':
         myChip8.key[0x3] = 1
-    elif key == '4':
+    elif key == b'4':
         myChip8.key[0xC] = 1
 
-    elif key == 'q':
+    elif key == b'q':
         myChip8.key[0x4] = 1
-    elif key == 'w':
+    elif key == b'w':
         myChip8.key[0x5] = 1
-    elif key == 'e':
+    elif key == b'e':
         myChip8.key[0x6] = 1
-    elif key == 'r':
+    elif key == b'r':
         myChip8.key[0xD] = 1
 
-    elif key == 'a':
+    elif key == b'a':
         myChip8.key[0x7] = 1
-    elif key == 's':
+    elif key == b's':
         myChip8.key[0x8] = 1
-    elif key == 'd':
+    elif key == b'd':
         myChip8.key[0x9] = 1
-    elif key == 'f':
+    elif key == b'f':
         myChip8.key[0xE] = 1
 
-    elif key == 'z':
+    elif key == b'z':
         myChip8.key[0xA] = 1
-    elif key == 'x':
+    elif key == b'x':
         myChip8.key[0x0] = 1
-    elif key == 'c':
+    elif key == b'c':
         myChip8.key[0xB] = 1
-    elif key == 'v':
+    elif key == b'v':
         myChip8.key[0xF] = 1
 
-    print("Press key %c" % key)
+    print("Press key %s" % key)
 
 
 def keyboardUp(key, x, y):
-    if key == '1':
+    if key == b'1':
         myChip8.key[0x1] = 0
-    elif key == '2':
+    elif key == b'2':
         myChip8.key[0x2] = 0
-    elif key == '3':
+    elif key == b'3':
         myChip8.key[0x3] = 0
-    elif key == '4':
+    elif key == b'4':
         myChip8.key[0xC] = 0
 
-    elif key == 'q':
+    elif key == b'q':
         myChip8.key[0x4] = 0
-    elif key == 'w':
+    elif key == b'w':
         myChip8.key[0x5] = 0
-    elif key == 'e':
+    elif key == b'e':
         myChip8.key[0x6] = 0
-    elif key == 'r':
+    elif key == b'r':
         myChip8.key[0xD] = 0
 
-    elif key == 'a':
+    elif key == b'a':
         myChip8.key[0x7] = 0
-    elif key == 's':
+    elif key == b's':
         myChip8.key[0x8] = 0
-    elif key == 'd':
+    elif key == b'd':
         myChip8.key[0x9] = 0
-    elif key == 'f':
+    elif key == b'f':
         myChip8.key[0xE] = 0
 
-    elif key == 'z':
+    elif key == b'z':
         myChip8.key[0xA] = 0
-    elif key == 'x':
+    elif key == b'x':
         myChip8.key[0x0] = 0
-    elif key == 'c':
+    elif key == b'c':
         myChip8.key[0xB] = 0
-    elif key == 'v':
+    elif key == b'v':
         myChip8.key[0xF] = 0
 
 
-main(2, ["myChip8.exe", "/Users/jinhankim/github/chip8/chip8_applications/pong2.c8"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/pong2.c8"])
