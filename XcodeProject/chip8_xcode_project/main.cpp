@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 //        fprintf(stdout, "Current working dir: %s\n", cwd);
     
     // Load game
-    if (!myChip8.loadApplication("/Users/jinhankim/github/chip8/chip8_applications/pong2.c8"))
+    if (!myChip8.loadApplication("/Users/jinhankim/github/chip8/chip8_applications/tetris.c8"))
         return 1;
     
     // Setup OpenGL

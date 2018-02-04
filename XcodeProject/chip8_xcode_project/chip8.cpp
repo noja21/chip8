@@ -80,8 +80,11 @@ void chip8::init() {
 }
 
 void chip8::emulateCycle() {
+    printf("HERE: emulateCycle()\n");
+    
     // Fetch opcode
     opcode = memory[pc] << 8 | memory[pc + 1];
+    printf("HERE opcode: %d\n", opcode);
     
     // Process opcode
     switch (opcode & 0xF000) {
@@ -241,6 +244,7 @@ void chip8::emulateCycle() {
         {
             unsigned short x = V[(opcode & 0x0F00) >> 8];
             unsigned short y = V[(opcode & 0x00F0) >> 4];
+            printf("HERE x, y: (%d, %d)\n", x, y);
             unsigned short height = opcode & 0x000F;
             unsigned short pixel;
             
@@ -248,6 +252,7 @@ void chip8::emulateCycle() {
             for (int yline = 0; yline < height; yline++) {
                 pixel = memory[I + yline];
                 for (int xline = 0; xline < 8; xline++) {
+                    printf("HERE (pixel & (0x80 >> xline)): %d\n", (pixel & (0x80 >> xline)));
                     if ((pixel & (0x80 >> xline)) != 0) {
                         printf("HERE: %d\n", (x + xline + ((y + yline) * 64))); // idx max: 2047, idx error: 2174
                         if (gfx[(x + xline + ((y + yline) * 64))] == 1) {

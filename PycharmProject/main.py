@@ -11,7 +11,7 @@ SCREEN_WIDTH = 64
 SCREEN_HEIGHT = 32
 
 myChip8 = Chip8()
-modifier = 10
+modifier = 5
 
 # Window size
 display_width = SCREEN_WIDTH * modifier
@@ -36,7 +36,7 @@ def main(argc, argv):
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA)
 
     glutInitWindowSize(display_width, display_height)
-    glutInitWindowPosition(320, 320)
+    glutInitWindowPosition(0, 0)
     glutCreateWindow("Phip8 by Jinhan Kim")
 
     glutDisplayFunc(display)
@@ -243,4 +243,4 @@ def keyboardUp(key, x, y):
         myChip8.key[0xF] = 0
 
 
-main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/pong2.c8"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/tetris.c8"])
