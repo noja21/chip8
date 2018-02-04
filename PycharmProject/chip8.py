@@ -25,23 +25,23 @@ chip8_fontset = [
 
 class Chip8:
     def __init__(self):
-        self.drawFlag = None
+        self.drawFlag = False
 
         # Chip8
-        self.gfx = [None] * (64 * 32)  # Total amount of pixels: 2048
-        self.key = [None] * 16
+        self.gfx = [0] * (64 * 32)  # Total amount of pixels: 2048
+        self.key = [0] * 16
 
-        self.pc = None  # Program counter
-        self.opcode = None  # Current opcode
-        self.I = None  # Index register
-        self.sp = None  # Stack pointer
+        self.pc = 0  # Program counter
+        self.opcode = 0  # Current opcode
+        self.I = 0  # Index register
+        self.sp = 0  # Stack pointer
 
-        self.V = [None] * 16  # V registers (V0-VF)
-        self.stack = [None] * 16  # Stack (16 levels)
-        self.memory = [None] * 4096  # Memory (size = 4k)
+        self.V = [0] * 16  # V registers (V0-VF)
+        self.stack = [0] * 16  # Stack (16 levels)
+        self.memory = [0] * 4096  # Memory (size = 4k)
 
-        self.delay_timer = None  # Delay timer
-        self.sound_timer = None  # Sound timer
+        self.delay_timer = 0  # Delay timer
+        self.sound_timer = 0  # Sound timer
 
     def __del__(self):
         pass
@@ -80,7 +80,6 @@ class Chip8:
 
         random.seed(datetime.now())
 
-
     def emulateCycle(self):
         # Fetch opcode
         self.opcode = self.memory[self.pc] << 8 | self.memory[self.pc + 1]
@@ -106,7 +105,8 @@ class Chip8:
 
             elif last_nibble == 0x000E:  # 0x00EE: Returns from subroutine
                 self.sp = self.sp - 1  # 16 levels of stack, decrease stack pointer to prevent overwrite
-                self.pc = self.stack[self.sp]  # Put the stored return address from the stack back into the program counter
+                self.pc = self.stack[
+                    self.sp]  # Put the stored return address from the stack back into the program counter
                 self.pc = self.pc + 2  # Don't forget to increase the program counter!
 
             else:
@@ -269,7 +269,7 @@ class Chip8:
                         keypress = True
 
                 # If we didn't received a keypress, skip this cycle and try again.
-                if ~keypress:
+                if not keypress:
                     return
 
                 self.pc = self.pc + 2
@@ -331,7 +331,6 @@ class Chip8:
                 print("BEEP!")
             self.sound_timer = self.sound_timer - 1
 
-
     def debugRender(self):
         # Draw
         for y in range(32):
@@ -342,7 +341,6 @@ class Chip8:
                     print(" ", end='')
             print("")
         print("")
-
 
     def loadApplication(self, filename):
         self.init()
