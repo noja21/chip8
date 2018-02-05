@@ -82,11 +82,8 @@ class Chip8:
         random.seed(datetime.now())
 
     def emulateCycle(self):
-        print("HERE: emulateCycle()")
-
         # Fetch opcode
         self.opcode = self.memory[self.pc] << 8 | self.memory[self.pc + 1]
-        print("HERE opcode: %d" % self.opcode)
 
         # Process opcode
         first_nibble = self.opcode & 0xF000
@@ -97,11 +94,7 @@ class Chip8:
 
         VX_idx = (self.opcode & 0x0F00) >> 8
         VX = np.uint8(self.V[VX_idx])  # assign case and value case co-exist
-        #print("HERE VX: %d" % VX)
         VY = np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
-        #print("HERE VY: %d" % VY)
-        #print("HERE (self.opcode & 0x00F0) >> 4: %d" % ((self.opcode & 0x00F0) >> 4))
-
         # VF = self.V[0xF] # only assign case exist. python not support define macros
 
         if first_nibble == 0x0000:
@@ -230,23 +223,16 @@ class Chip8:
             # I value doesn't change after the execution of this instruction.
             # VF is set to 1 if any screen pixels are flipped from set to unset when the sprite is drawn,
             # and to 0 if that doesn't happen
-            x = VX  # x = self.V[(self.opcode & 0x0F00) >> 8]
-            y = VY  # y = self.V[(self.opcode & 0x00F0) >> 4]
-            print("HERE x, y: (%d, %d)" % (x, y))
+            x = VX
+            y = VY
             height = last_nibble  # height = self.opcode & 0x000F
-            #print("HERE height: %d" % height)
             pixel = None
 
             self.V[0xF] = 0
             for yline in range(height):
                 pixel = self.memory[self.I + yline]
                 for xline in range(8):
-                    #print("HERE (pixel & (0x80 >> xline)): %d" % (pixel & (0x80 >> xline)))
                     if (pixel & (0x80 >> xline)) != 0:
-                        # idx max: 2047, idx error: 2174 for pong2.c8
-                        # idx max: 2047, idx error: 18341 for tetris.c8. VX = 37, VY = 286
-                        print("HERE: %d" % (x + xline + ((y + yline) * 64)))
-
                         if self.gfx[x + xline + ((y + yline) * 64)] == 1:
                             self.V[0xF] = 1
                         self.gfx[x + xline + ((y + yline) * 64)] = self.gfx[x + xline + ((y + yline) * 64)] ^ 1
