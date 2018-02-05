@@ -19,7 +19,7 @@ display_height = SCREEN_HEIGHT * modifier
 
 # Use new drawing method
 DRAWWITHTEXTURE = True
-screenData = np.zeros(shape=(SCREEN_HEIGHT, SCREEN_WIDTH, 3))
+screenData = np.zeros(shape=(SCREEN_HEIGHT, SCREEN_WIDTH, 3), dtype=np.uint8)
 
 
 def main(argc, argv):
@@ -243,4 +243,4 @@ def keyboardUp(key, x, y):
         myChip8.key[0xF] = 0
 
 
-main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/tetris.c8"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/UFO"])

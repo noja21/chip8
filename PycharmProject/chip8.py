@@ -29,20 +29,20 @@ class Chip8:
         self.drawFlag = False
 
         # Chip8
-        self.gfx = [0] * (64 * 32)  # Total amount of pixels: 2048
-        self.key = [0] * 16
+        self.gfx = [np.uint8(0)] * (64 * 32)  # Total amount of pixels: 2048
+        self.key = [np.uint8(0)] * 16
 
-        self.pc = 0  # Program counter
-        self.opcode = 0  # Current opcode
-        self.I = 0  # Index register
-        self.sp = 0  # Stack pointer
+        self.pc = np.uint16(0)  # Program counter
+        self.opcode = np.uint16(0)  # Current opcode
+        self.I = np.uint16(0)  # Index register
+        self.sp = np.uint16(0)  # Stack pointer
 
-        self.V = [0] * 16  # V registers (V0-VF)
-        self.stack = [0] * 16  # Stack (16 levels)
-        self.memory = [0] * 4096  # Memory (size = 4k)
+        self.V = [np.uint8(0)] * 16  # V registers (V0-VF)
+        self.stack = [np.uint16(0)] * 16  # Stack (16 levels)
+        self.memory = [np.uint8(0)] * 4096  # Memory (size = 4k)
 
-        self.delay_timer = 0  # Delay timer
-        self.sound_timer = 0  # Sound timer
+        self.delay_timer = np.uint8(0)  # Delay timer
+        self.sound_timer = np.uint8(0)  # Sound timer
 
     def __del__(self):
         pass
@@ -93,8 +93,8 @@ class Chip8:
         NN = self.opcode & 0x00FF
 
         VX_idx = (self.opcode & 0x0F00) >> 8
-        VX =  np.uint8(self.V[VX_idx])  # assign case and value case co-exist
-        VY =  np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
+        VX = np.uint8(self.V[VX_idx])  # assign case and value case co-exist
+        VY = np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
         # VF = self.V[0xF] # only assign case exist. python not support define macros
 
         if first_nibble == 0x0000:
