@@ -252,7 +252,7 @@ void chip8::emulateCycle() {
             for (int yline = 0; yline < height; yline++) {
                 pixel = memory[I + yline];
                 for (int xline = 0; xline < 8; xline++) {
-                    printf("HERE (pixel & (0x80 >> xline)): %d\n", (pixel & (0x80 >> xline)));
+                    // printf("HERE (pixel & (0x80 >> xline)): %d\n", (pixel & (0x80 >> xline)));
                     if ((pixel & (0x80 >> xline)) != 0) {
                         printf("HERE: %d\n", (x + xline + ((y + yline) * 64))); // idx max: 2047, idx error: 2174
                         if (gfx[(x + xline + ((y + yline) * 64))] == 1) {

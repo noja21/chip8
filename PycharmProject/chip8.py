@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+import numpy as np
 from datetime import datetime
 
 chip8_fontset = [
@@ -95,9 +96,9 @@ class Chip8:
         NN = self.opcode & 0x00FF
 
         VX_idx = (self.opcode & 0x0F00) >> 8
-        VX = self.V[VX_idx]  # assign case and value case co-exist
+        VX = np.uint8(self.V[VX_idx])  # assign case and value case co-exist
         #print("HERE VX: %d" % VX)
-        VY = self.V[(self.opcode & 0x00F0) >> 4]  # only value case exist
+        VY = np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
         #print("HERE VY: %d" % VY)
         #print("HERE (self.opcode & 0x00F0) >> 4: %d" % ((self.opcode & 0x00F0) >> 4))
 
@@ -233,7 +234,7 @@ class Chip8:
             y = VY  # y = self.V[(self.opcode & 0x00F0) >> 4]
             print("HERE x, y: (%d, %d)" % (x, y))
             height = last_nibble  # height = self.opcode & 0x000F
-            print("HERE height: %d" % height)
+            #print("HERE height: %d" % height)
             pixel = None
 
             self.V[0xF] = 0
