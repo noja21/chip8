@@ -93,8 +93,8 @@ class Chip8:
         NN = self.opcode & 0x00FF
 
         VX_idx = (self.opcode & 0x0F00) >> 8
-        VX = np.uint8(self.V[VX_idx])  # assign case and value case co-exist
-        VY = np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
+        VX =  np.uint8(self.V[VX_idx])  # assign case and value case co-exist
+        VY =  np.uint8(self.V[(self.opcode & 0x00F0) >> 4])  # only value case exist
         # VF = self.V[0xF] # only assign case exist. python not support define macros
 
         if first_nibble == 0x0000:
