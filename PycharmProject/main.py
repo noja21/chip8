@@ -82,9 +82,11 @@ def updateTexture(c8):
     for y in range(32):
         for x in range(64):
             if c8.gfx[(y * 64) + x] == 0:
-                screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 0  # Disabled
+                # screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 0  # Disabled
+                screenData[y][x][0] = 64; screenData[y][x][1] = 64; screenData[y][x][2] = 64  # Disabled
             else:
-                screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 255  # Enabled
+                # screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 255  # Enabled
+                screenData[y][x][0] = 255; screenData[y][x][1] = 0; screenData[y][x][2] = 255  # Enabled
 
     # Update Texture
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, screenData)
