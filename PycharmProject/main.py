@@ -11,7 +11,7 @@ SCREEN_WIDTH = 64
 SCREEN_HEIGHT = 32
 
 myChip8 = Chip8()
-modifier = 5
+modifier = 15
 
 # Window size
 display_width = SCREEN_WIDTH * modifier
@@ -245,4 +245,4 @@ def keyboardUp(key, x, y):
         myChip8.key[0xF] = 0
 
 
-main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/BLINKY"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/UFO"])

@@ -169,7 +169,7 @@ class Chip8:
                     self.V[0xF] = 1  # carry
                 else:
                     self.V[0xF] = 0
-                self.V[VX_idx] = VX + VY
+                self.V[VX_idx] = np.uint8(VX + VY)
                 self.pc = self.pc + 2
 
             elif last_nibble == 0x0005:  # 0x8XY5: VY is subtracted from VX. VF is set to 0 when there's a borrow, and 1 when there isn't
@@ -177,7 +177,7 @@ class Chip8:
                     self.V[0xF] = 0  # there is a borrow
                 else:
                     self.V[0xF] = 1
-                self.V[VX_idx] = VX - VY
+                self.V[VX_idx] = np.uint8(VX - VY)
                 self.pc = self.pc + 2
 
             elif last_nibble == 0x0006:  # 0x8XY6: Shifts VX right by one. VF is set to the value of the least significant bit of VX before the shift
