@@ -245,4 +245,4 @@ def keyboardUp(key, x, y):
         myChip8.key[0xF] = 0
 
 
-main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/UFO"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/BLINKY"])
