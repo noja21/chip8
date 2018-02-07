@@ -83,7 +83,7 @@ def updateTexture(c8):
         for x in range(64):
             if c8.gfx[(y * 64) + x] == 0:
                 # screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 0  # Disabled
-                screenData[y][x][0] = 64; screenData[y][x][1] = 64; screenData[y][x][2] = 64  # Disabled
+                screenData[y][x][0] = 32; screenData[y][x][1] = 32; screenData[y][x][2] = 32  # Disabled
             else:
                 # screenData[y][x][0] = screenData[y][x][1] = screenData[y][x][2] = 255  # Enabled
                 screenData[y][x][0] = 255; screenData[y][x][1] = 0; screenData[y][x][2] = 255  # Enabled
@@ -245,4 +245,4 @@ def keyboardUp(key, x, y):
         myChip8.key[0xF] = 0
 
 
-main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/pong2.c8"])
+main(2, ["phip8", "/Users/jinhankim/github/chip8/chip8_applications/PUZZLE"])
